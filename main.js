@@ -46,6 +46,11 @@ spotLight.position.set(0, 25, 0);
 spotLight.castShadow = true;
 spotLight.shadow.bias = -0.0001;
 scene.add(spotLight);
+const ambientLight = new THREE.AmbientLight(0x404040, 10);
+
+// Add the ambient light to the scene
+scene.add(ambientLight);
+
 
 const loader = new GLTFLoader().setPath('public/millennium_falcon/');
 loader.load('scene.gltf', (gltf) => {
@@ -59,7 +64,7 @@ loader.load('scene.gltf', (gltf) => {
     }
   });
 
-  mesh.position.set(0, 1.05, -1);
+  mesh.position.set(0, 2, 1);
   scene.add(mesh);
 
   document.getElementById('progress-container').style.display = 'none';
@@ -80,5 +85,7 @@ function animate() {
   controls.update();
   renderer.render(scene, camera);
 }
+
+
 
 animate();
